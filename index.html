@@ -3,36 +3,83 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Guider om Monero-mining och elpris – MineSmart</title>
-<meta name="description" content="Guider om Monero-mining i Sverige: lönsamhet, elpriset förklarat och hur du kommer igång.">
-<meta property="og:title" content="Guider om Monero-mining och elpris – MineSmart">
-<meta property="og:description" content="Guider om Monero-mining i Sverige: lönsamhet, elpriset förklarat och hur du kommer igång.">
+<title>MineSmart – lönar sig Monero-mining med ditt elpris?</title>
+<meta name="description" content="Gratis kalkylator: räkna ut vinst eller förlust på Monero-mining i Sverige med dagens elpris för SE1–SE4 och live XMR-pris.">
+<meta property="og:title" content="MineSmart – lönar sig Monero-mining med ditt elpris?">
+<meta property="og:description" content="Gratis kalkylator: räkna ut vinst eller förlust på Monero-mining i Sverige med dagens elpris för SE1–SE4 och live XMR-pris.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="sv_SE">
 <meta name="theme-color" content="#0b0f14">
-<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/style.css">
-<link rel="canonical" href="https://jonathanhagglund-creator.github.io/minesmart/guider/index.html">
-<meta property="og:url" content="https://jonathanhagglund-creator.github.io/minesmart/guider/index.html">
-<script src="../assets/donate.js" defer></script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<link rel="canonical" href="https://jonathanhagglund-creator.github.io/minesmart/">
+<meta property="og:url" content="https://jonathanhagglund-creator.github.io/minesmart/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "MineSmart", "applicationCategory": "FinanceApplication", "operatingSystem": "Alla (webbläsare)", "inLanguage": "sv", "description": "Kalkylator för lönsamhet vid Monero-mining i Sverige med dagens elpris för SE1–SE4.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "SEK"}}</script>
+<script src="calc.js" defer></script><script src="live.js" defer></script><script src="app.js" defer></script><script src="donate.js" defer></script>
 </head>
 <body>
 <header class="site-header"><div class="wrap">
-  <a class="brand" href="../index.html">⛏️ Mine<span>Smart</span></a>
-  <nav class="nav" aria-label="Huvudmeny"><a href="../index.html">Kalkylator</a><a href="../elpris.html">Elpris idag</a><a href="../guider/index.html" aria-current="page">Guider</a><a href="../om.html">Om</a></nav>
+  <a class="brand" href="index.html">⛏️ Mine<span>Smart</span></a>
+  <nav class="nav" aria-label="Huvudmeny"><a href="index.html" aria-current="page">Kalkylator</a><a href="elpris.html">Elpris idag</a><a href="guider.html">Guider</a><a href="om.html">Om</a></nav>
 </div></header>
 <main class="wrap">
 
-<h1>Guider</h1>
-<p class="lead">Korta, raka guider om Monero-mining och elpriser i Sverige.</p>
-<div class="cards">
-  <a class="panel card" href="lonar-sig-monero-mining.html"><h2>Lönar sig Monero-mining i Sverige?</h2>
-    <p>Vad som avgör lönsamheten och hur du räknar på din egen dator.</p></a>
-  <a class="panel card" href="elpriset-forklarat.html"><h2>Ditt elpris förklarat</h2>
-    <p>Spotpris, påslag, nätavgift, energiskatt och moms – och varför avtalstypen spelar roll.</p></a>
-  <a class="panel card" href="kom-igang.html"><h2>Kom igång</h2>
-    <p>Program, plånbok och mätning – så börjar du mina Monero på din dator.</p></a>
+<h1>Lönar sig Monero-mining med ditt elpris?</h1>
+<p class="lead">Räkna ut vad du tjänar – eller förlorar – på att mina Monero (XMR) i Sverige.
+Kalkylatorn hämtar dagens spotpris för ditt elområde och aktuellt XMR-pris automatiskt.
+Allt räknas i din webbläsare; inget du fyller i skickas till oss.</p>
+
+<div class="grid">
+<form id="calc" class="panel" novalidate onsubmit="return false">
+  <h2>Dina uppgifter</h2>
+  <fieldset><legend>Dator</legend>
+    <div class="field"><label for="hashrate">Hashrate (H/s)<span class="hint">Se XMRig-fönstret, t.ex. ”speed 10s/60s/15m”</span></label><input id="hashrate" name="hashrate" inputmode="decimal" autocomplete="off" placeholder="t.ex. 2500"></div>
+    <div class="field"><label for="power">Effekt under mining (W)<span class="hint">Mät med en energimätare i uttaget</span></label><input id="power" name="power" inputmode="decimal" autocomplete="off" placeholder="t.ex. 40"></div>
+    <div class="field"><label for="idle">Effekt i vila (W)<span class="hint">Om datorn ändå står på – räknas bort</span></label><input id="idle" name="idle" inputmode="decimal" autocomplete="off" value="0"></div>
+    <div class="field"><label for="hwCost">Vad datorn kostar (kr)<span class="hint">För återbetalningstid. 0 = redan betald</span></label><input id="hwCost" name="hwCost" inputmode="decimal" autocomplete="off" value="0"></div>
+  </fieldset>
+  <fieldset><legend>El</legend>
+    <div class="field"><label for="area">Elområde</label><select id="area" name="area"><option value="SE1">SE1</option><option value="SE2">SE2</option><option value="SE3" selected>SE3</option><option value="SE4">SE4</option></select></div>
+    <div class="field"><label for="spotMode">Räkna med<span class="hint">Rörligt månadspris → välj dygnsmedel</span></label>
+      <select id="spotMode" name="spotMode"><option value="now">Spotpris just nu</option>
+      <option value="avg">Dagens dygnsmedel</option></select></div>
+    <div class="field"><label for="spot">Spotpris (kr/kWh, exkl. moms)</label><input id="spot" name="spot" inputmode="decimal" autocomplete="off" ><p class="src" id="src-spot" aria-live="polite"></p></div>
+    <div class="field"><label for="markup">Elhandelspåslag (kr/kWh)<span class="hint">Exkl. moms – står på elfakturan</span></label><input id="markup" name="markup" inputmode="decimal" autocomplete="off" ></div>
+    <div class="field"><label for="grid">Elnätsavgift, rörlig (kr/kWh)<span class="hint">Exkl. moms – står på nätfakturan</span></label><input id="grid" name="grid" inputmode="decimal" autocomplete="off" ></div>
+    <div class="field"><label for="tax">Energiskatt (kr/kWh)<span class="hint">Exkl. moms – står på fakturan</span></label><input id="tax" name="tax" inputmode="decimal" autocomplete="off" ></div>
+    <div class="field"><label for="vat">Moms (%)</label><input id="vat" name="vat" inputmode="decimal" autocomplete="off" value="25"></div>
+  </fieldset>
+  <fieldset><legend>Monero</legend>
+    <div class="field"><label for="xmrPrice">XMR-pris (kr)</label><input id="xmrPrice" name="xmrPrice" inputmode="decimal" autocomplete="off" ><p class="src" id="src-xmrPrice" aria-live="polite"></p></div>
+    <div class="field"><label for="difficulty">Nätverkets difficulty</label><input id="difficulty" name="difficulty" inputmode="decimal" autocomplete="off" ><p class="src" id="src-difficulty" aria-live="polite"></p></div>
+    <div class="field"><label for="poolFee">Poolavgift (%)<span class="hint">Står hos din pool (P2Pool tar 0 %)</span></label><input id="poolFee" name="poolFee" inputmode="decimal" autocomplete="off" value="0"></div>
+  </fieldset>
+  <p class="small muted">Dina egna värden sparas bara i den här webbläsaren så att du slipper fylla i dem igen.</p>
+</form>
+
+<section class="panel" aria-live="polite">
+  <h2>Resultat</h2>
+  <div id="results"><div class="verdict info">Laddar …</div></div>
+</section>
 </div>
+
+<h2>Så räknar kalkylatorn</h2>
+<p>Monero skapar ett nytt block ungefär var 120:e sekund, alltså cirka 720 block per dygn, och varje block ger
+0,6 XMR i belöning. Din andel av belöningen motsvarar din andel av nätverkets totala hashrate, som räknas fram
+ur nätverkets difficulty. Från intäkten dras poolavgift och elkostnad. Elkostnaden är din effekt gånger
+24 timmar gånger ditt totala elpris per kWh – spotpris, påslag, rörlig nätavgift, energiskatt och moms.
+Fasta avgifter som abonnemang räknas inte, eftersom du betalar dem oavsett.</p>
+<p>Läs mer i guiden <a href="lonar-sig-monero-mining.html">Lönar sig Monero-mining i Sverige?</a></p>
+
+<h2>Vanliga frågor</h2>
+<h3>Varför visar kalkylatorn förlust?</h3>
+<p>Med vanliga datorer och svenska elpriser kostar elen ofta mer än det minandet ger. Titta på raden
+”Elpris där du går jämnt upp” – ligger ditt elpris över den gör du förlust.</p>
+<h3>Är resultatet exakt?</h3>
+<p>Nej. Det är ett statistiskt genomsnitt. Verkliga utbetalningar varierar, och både XMR-pris och nätverkets
+svårighetsgrad ändras hela tiden.</p>
+<h3>Behöver jag lämna några uppgifter?</h3>
+<p>Nej. Kalkylatorn kräver inget konto, och MineSmart frågar aldrig efter plånboksnycklar eller seed-fraser.</p>
 
 </main>
 <footer class="site-footer"><div class="wrap">
@@ -47,9 +94,9 @@
     <span class="copied" id="copy-ok" hidden>Kopierad!</span></div>
 </section>
 
-  <nav aria-label="Sidfot"><a href="../index.html">Kalkylator</a><a href="../elpris.html">Elpris idag</a>
-  <a href="../guider/index.html">Guider</a><a href="../om.html">Om MineSmart</a>
-  <a href="../integritetspolicy.html">Integritetspolicy</a></nav>
+  <nav aria-label="Sidfot"><a href="index.html">Kalkylator</a><a href="elpris.html">Elpris idag</a>
+  <a href="guider.html">Guider</a><a href="om.html">Om MineSmart</a>
+  <a href="integritetspolicy.html">Integritetspolicy</a></nav>
   <p>MineSmart ger uppskattningar, inte ekonomisk rådgivning. Alla siffror visas med källa och tidpunkt.
   Elpriser: elprisetjustnu.se. XMR-pris: CoinGecko. Nätverksdata: xmrchain.net.</p>
 </div></footer>
