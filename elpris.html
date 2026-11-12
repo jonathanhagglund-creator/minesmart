@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elpriset idag i SE1–SE4 – MineSmart</title>
+<meta name="description" content="Dagens spotpris per kvart för SE1, SE2, SE3 och SE4 – och vad som tillkommer på din elräkning.">
+<meta property="og:title" content="Elpriset idag i SE1–SE4 – MineSmart">
+<meta property="og:description" content="Dagens spotpris per kvart för SE1, SE2, SE3 och SE4 – och vad som tillkommer på din elräkning.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="sv_SE">
+<meta name="theme-color" content="#0b0f14">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="canonical" href="https://jonathanhagglund-creator.github.io/minesmart/elpris.html">
+<meta property="og:url" content="https://jonathanhagglund-creator.github.io/minesmart/elpris.html">
+<script src="assets/live.js" defer></script><script src="assets/elpris.js" defer></script><script src="assets/donate.js" defer></script>
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="index.html">⛏️ Mine<span>Smart</span></a>
+  <nav class="nav" aria-label="Huvudmeny"><a href="index.html">Kalkylator</a><a href="elpris.html" aria-current="page">Elpris idag</a><a href="guider/index.html">Guider</a><a href="om.html">Om</a></nav>
+</div></header>
+<main class="wrap">
+
+<h1>Elpriset idag – SE1, SE2, SE3 och SE4</h1>
+<p class="lead">Dagens spotpris per kvart eller timme för ditt elområde. Spotpriset är bara en del av vad du
+betalar – påslag, nätavgift, energiskatt och moms tillkommer.</p>
+<div class="panel">
+  <div class="field" style="max-width:360px"><label for="area">Elområde</label><select id="area"><option value="SE1">SE1</option><option value="SE2">SE2</option><option value="SE3" selected>SE3</option><option value="SE4">SE4</option></select></div>
+  <div id="prices"></div>
+</div>
+<h2>Vilket elområde bor jag i?</h2>
+<p>Sverige är indelat i fyra elområden. SE1 är norra Sverige (Luleå), SE2 norra Mellansverige (Sundsvall),
+SE3 södra Mellansverige (bland annat Stockholm och Göteborg) och SE4 södra Sverige (Malmö).
+Ditt elområde står på elfakturan.</p>
+<p>Vill du veta om det lönar sig att mina med dagens pris? <a href="index.html">Öppna kalkylatorn</a>.</p>
+
+</main>
+<footer class="site-footer"><div class="wrap">
+<section class="donate" aria-labelledby="donate-h">
+  <h2 id="donate-h">Stöd MineSmart</h2>
+  <p>Sidan är gratis och utan reklam. Tycker du att den är till nytta får du gärna skicka en frivillig slant.</p>
+  <p><strong>Swish:</strong> <span class="swish">076-844 21 24</span> <span class="muted small">– öppna Swish-appen och skicka valfritt belopp.</span></p>
+  <p><strong>Monero:</strong></p>
+  <div class="addr"><code id="xmr-addr">45dqHdN4dLkT1mVMQa5jwHgXd8SvazS57EiKCUEMgxNkPaKBL97qdHh68GKy7M36ytWgAD6zuHHYdXKxduyp9U1aDypWhgH</code>
+    <button type="button" id="copy-xmr">Kopiera adress</button>
+    <a class="cta" href="monero:45dqHdN4dLkT1mVMQa5jwHgXd8SvazS57EiKCUEMgxNkPaKBL97qdHh68GKy7M36ytWgAD6zuHHYdXKxduyp9U1aDypWhgH?tx_description=St%C3%B6d%20MineSmart">Öppna i plånbok</a>
+    <span class="copied" id="copy-ok" hidden>Kopierad!</span></div>
+</section>
+
+  <nav aria-label="Sidfot"><a href="index.html">Kalkylator</a><a href="elpris.html">Elpris idag</a>
+  <a href="guider/index.html">Guider</a><a href="om.html">Om MineSmart</a>
+  <a href="integritetspolicy.html">Integritetspolicy</a></nav>
+  <p>MineSmart ger uppskattningar, inte ekonomisk rådgivning. Alla siffror visas med källa och tidpunkt.
+  Elpriser: elprisetjustnu.se. XMR-pris: CoinGecko. Nätverksdata: xmrchain.net.</p>
+</div></footer>
+</body>
+</html>
